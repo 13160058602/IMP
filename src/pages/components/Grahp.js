@@ -3,7 +3,7 @@
  * @Email: 1614699407@qq.com
  * @Date: 2021-05-14 00:39:20
  * @LastAuthor: 王正荣
- * @LastTime: 2021-05-14 17:41:13
+ * @LastTime: 2021-05-15 00:16:21
  * @message: ks图
  */
 import React, { useEffect } from 'react';
@@ -49,6 +49,7 @@ const GraphArea = (props) => {
           type: 'line',
           style: {
             endArrow: true,
+            stroke: 'black'
             // startArrow: true
           }
         },

@@ -3,7 +3,7 @@
  * @Email: 1614699407@qq.com
  * @Date: 2021-05-10 22:10:50
  * @LastAuthor: 王正荣
- * @LastTime: 2021-05-14 18:03:51
+ * @LastTime: 2021-05-15 00:13:32
  * @message: 主页面
  */
 import React, { useState } from 'react';
@@ -58,6 +58,7 @@ const MainPage = () => {
     const edges = [];
     kripkeStructure.forEach((item) => {
       const i = nodes.findIndex((inde) => inde.label === item.vertex);
+      if (!item.nextKSStatusList) return;
       item.nextKSStatusList.forEach((subItem) => {
         if (subItem) {
           const j = nodes.findIndex((inde) => inde.label === subItem.vertex);
@@ -68,6 +69,7 @@ const MainPage = () => {
         }
       });
     });
+    console.log(edges)
     setNewData({ nodes, edges });
     getKSStructure(nodes, edges);
   }
