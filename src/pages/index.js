@@ -3,7 +3,7 @@
  * @Email: 1614699407@qq.com
  * @Date: 2021-05-10 22:10:50
  * @LastAuthor: 王正荣
- * @LastTime: 2021-05-15 21:16:01
+ * @LastTime: 2021-05-15 21:38:17
  * @message: 主页面
  */
 import React, { useState } from 'react';
@@ -11,6 +11,8 @@ import { Input, Button, Modal } from 'antd';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 import GraphArea from './components/Grahp';
+
+var count = 0;
 
 const MainPage = () => {
 
@@ -20,6 +22,7 @@ const MainPage = () => {
   const [resultFirstOrderArr, setResultFirstOrderArr] = useState();
   const [newData, setNewData] = useState();
   const [relation, setRelation] = useState();
+  // const [count, setCount] = useState(0);
 
   const getIMPProgrammer = () => {
     if (!content) {
@@ -81,6 +84,7 @@ const MainPage = () => {
     });
     setNewData({ nodes, edges });
     getKSStructure(nodes, tmpEdges);
+    count++;
   }
 
   const getKSStructure = (nodes, edges) => {
@@ -94,6 +98,8 @@ const MainPage = () => {
     });
     setRelation(arr);
   }
+
+  console.log(count)
   
   return (
     <React.Fragment>
@@ -152,7 +158,7 @@ const MainPage = () => {
       >
         <p>{messageErr}</p>
       </Modal>
-      {newData && <GraphArea data={newData} />}
+      {newData && <GraphArea data={newData} count={count} />}
     </React.Fragment>
   );
 };
