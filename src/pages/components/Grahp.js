@@ -3,7 +3,7 @@
  * @Email: 1614699407@qq.com
  * @Date: 2021-05-14 00:39:20
  * @LastAuthor: 王正荣
- * @LastTime: 2021-05-15 23:33:37
+ * @LastTime: 2021-05-15 23:39:19
  * @message: ks图
  */
 import React, { useEffect } from 'react';
@@ -67,9 +67,10 @@ const GraphArea = (props) => {
       //   }
       // }
     } else {
-      graph.destroy();
+      if (graph) {
+        graph.destroy();
+      }
       createGraph();
-
     }
     graph.data(data);
     graph.render();
