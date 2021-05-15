@@ -3,7 +3,7 @@
  * @Email: 1614699407@qq.com
  * @Date: 2021-05-10 22:10:50
  * @LastAuthor: 王正荣
- * @LastTime: 2021-05-15 00:13:32
+ * @LastTime: 2021-05-15 10:43:14
  * @message: 主页面
  */
 import React, { useState } from 'react';
@@ -55,23 +55,32 @@ const MainPage = () => {
         label: item.vertex
       });
     });
-    const edges = [];
+    const tmpEdges = [];
     kripkeStructure.forEach((item) => {
       const i = nodes.findIndex((inde) => inde.label === item.vertex);
       if (!item.nextKSStatusList) return;
       item.nextKSStatusList.forEach((subItem) => {
         if (subItem) {
           const j = nodes.findIndex((inde) => inde.label === subItem.vertex);
-          edges.push({
+          tmpEdges.push({
             source: (i + 1).toString(),
             target: (j + 1).toString(),
           });
         }
       });
     });
-    console.log(edges)
+    const edges = tmpEdges.map((item) => {
+      if (item.source === item.target) {
+        return {
+          ...item,
+          type: 'loop'
+        }
+      } else {
+        return item;
+      }
+    });
     setNewData({ nodes, edges });
-    getKSStructure(nodes, edges);
+    getKSStructure(nodes, tmpEdges);
   }
 
   const getKSStructure = (nodes, edges) => {
