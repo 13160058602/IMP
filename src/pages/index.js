@@ -3,7 +3,7 @@
  * @Email: 1614699407@qq.com
  * @Date: 2021-05-10 22:10:50
  * @LastAuthor: 王正荣
- * @LastTime: 2021-05-15 10:43:14
+ * @LastTime: 2021-05-15 21:16:01
  * @message: 主页面
  */
 import React, { useState } from 'react';
@@ -29,7 +29,7 @@ const MainPage = () => {
     }
     axios({
       method: 'get',
-      url: 'http://120.77.34.26/impToFirstOrderFormula',
+      url: 'http://120.55.166.23:8080/impToFirstOrderFormula',
       params: {
         programInputString: content
       }
